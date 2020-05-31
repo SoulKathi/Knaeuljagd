@@ -27,13 +27,14 @@ class Katze(pygame.sprite.Sprite):
 
 
 class ZufallsObjekt(pygame.sprite.Sprite):
-    bilder_top = [pygame.image.load("maus.png"),
-                  pygame.image.load("falter.png"),
-                  pygame.image.load("knaeul.png")]
-
-    bilder_flop = [pygame.image.load("wasser.png"),
-                   pygame.image.load("laerm.png"),
-                   pygame.image.load("hund.png")]
+    maus = pygame.image.load("maus.png")
+    falter = pygame.image.load("falter.png")
+    knaeul = pygame.image.load("knaeul.png")
+    wasser = pygame.image.load("wasser.png")
+    laerm = pygame.image.load("laerm.png")
+    hund = pygame.image.load("hund.png")
+    bilder_top = [[maus,2], [falter,1], [knaeul,3]]
+    bilder_flop = [[wasser,-5], [laerm,-10], [hund,-15]]
 
     def __init__(self, F_BREITE, F_HOEHE):
         super().__init__()
@@ -43,9 +44,13 @@ class ZufallsObjekt(pygame.sprite.Sprite):
         self.gut = random.choice((True, False))
 
         if self.gut:
-            self.image = random.choice(ZufallsObjekt.bilder_top)
+            objekt = random.choice(ZufallsObjekt.bilder_top)
+            self.image = objekt[0]
+            self.value = objekt[1]
         else:
-            self.image = random.choice(ZufallsObjekt.bilder_flop)
+            objekt = random.choice(ZufallsObjekt.bilder_flop)
+            self.image = objekt[0]
+            self.value = objekt[1]
 
         self.rect = self.image.get_rect()
 

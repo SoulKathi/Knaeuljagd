@@ -21,7 +21,9 @@ while True:
             pygame.quit()
             sys.exit()
 
-    n_neue_objekte = N_MIN_OBJEKTE - len(sprites) + katze.punkte // 2
+    n_neue_objekte = N_MIN_OBJEKTE - len(sprites) + int(katze.punkte/2) // 2
+    if int(katze.punkte) < 0:
+        n_neue_objekte = N_MIN_OBJEKTE - len(sprites)
 
     for i in range(n_neue_objekte):
         sprites.add(knaeuljagd.ZufallsObjekt(F_BREITE, F_HOEHE))
@@ -29,10 +31,14 @@ while True:
     for sprite in sprites:
 
         if sprite != katze and pygame.sprite.collide_rect(katze, sprite):
+            katze.punkte += sprite.value
             if sprite.gut:
-                katze.punkte += 1
+                #print(sprite.value)
+                #katze.punkte += 1
                 t_kollision_top = pygame.time.get_ticks()
             else:
+                #katze.leben -= 1
+                #katze.punkte -= 10
                 katze.leben -= 1
                 t_kollision_flop = pygame.time.get_ticks()
                 if katze.leben <= 0:
