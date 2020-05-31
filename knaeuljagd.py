@@ -15,14 +15,15 @@ class Katze(pygame.sprite.Sprite):
 
     def update(self):
         gedrueckt = pygame.key.get_pressed()
+        step = 8
         if gedrueckt[pygame.K_UP]:
-            self.rect.y -= 8
+            self.rect.y -= step
         if gedrueckt[pygame.K_DOWN]:
-            self.rect.y += 8
+            self.rect.y += step
         if gedrueckt[pygame.K_LEFT]:
-            self.rect.x -= 8
+            self.rect.x -= step
         if gedrueckt[pygame.K_RIGHT]:
-            self.rect.x += 8
+            self.rect.x += step
         self.rect.clamp_ip(pygame.Rect(0, 0, self.F_BREITE, self.F_HOEHE))
 
 
