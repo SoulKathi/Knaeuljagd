@@ -2,8 +2,8 @@
 import pygame
 import knaeuljagd
 
-N_MIN_OBJEKTE = 10
-F_BREITE, F_HOEHE = 1000, 600
+N_MIN_OBJEKTE = 12
+F_BREITE, F_HOEHE = 1200, 700
 
 pygame.init()
 fenster = pygame.display.set_mode((F_BREITE, F_HOEHE))
